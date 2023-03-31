@@ -7,7 +7,7 @@ const Blogs = () => {
   // consume the data from the context
   const { post, loading } = useContext(AppContext);
   return (
-    <div>
+    <div className="w-11/12 max-w-[650px] py-8 flex flex-col gap-y-7">
       {loading ? (
         <Spinner />
       ) : post.length === 0 ? (
@@ -17,12 +17,14 @@ const Blogs = () => {
       ) : (
         post.map((post) => (
           <div key={post.id}>
-            <p className=""> {post.title}</p>
-            <p>
-              By <span>{post.author}</span> on <span>{post.category}</span>
+            <p className="font-bold text-lg"> {post.title}</p>
+            <p className="text-[15px]">
+              By <span className="italic">{post.author}</span> on{" "}
+              <span className="underline font-bold">{post.category}</span>
             </p>
-            <p>Posted on {post.date}</p>
-            <div className="mb-5">
+            <p className="text-[13px]">Posted on {post.date}</p>
+            <p className="text-[18px] mt-[10px]">{post.content}</p>
+            <div className="text-blue-500 underline text-[14px] text-bold flex gap-x-2">
               {post.tags.map((tag) => (
                 <span className=" ">{`#${tag}`}</span>
               ))}
